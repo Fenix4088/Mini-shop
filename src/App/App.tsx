@@ -5,6 +5,7 @@ import { Main } from "../components/Main/Main";
 import { AppContainer } from "../styles/GlobalStyles";
 import styled from "styled-components/macro";
 
+
 function App() {
     return (
         <>

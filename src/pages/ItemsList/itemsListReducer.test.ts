@@ -1,4 +1,4 @@
-import {InitialStateT, isRegistered, registrationReducer} from "./registrationReducer";
+import {InitialStateT, isRegistered, registrationReducer} from "./itemsListReducer";
 
 let startState: InitialStateT;
 beforeEach(() => {
