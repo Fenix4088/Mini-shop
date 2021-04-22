@@ -2,8 +2,10 @@ import { darken, lighten } from "polished";
 
 export type ThemeType = typeof theme;
 
-const primaryColor = '#4579db'
-const secondaryColor = '#dbb145'
+const primaryColor = '#4579db';
+const secondaryColor = '#dbb145';
+const activeColor = '#df4665';
+
 
 export const theme = {
     variable: {
@@ -19,6 +21,11 @@ export const theme = {
             main: secondaryColor,
             light: `${lighten(0.1, secondaryColor)}`,
             dark: `${darken(0.1, secondaryColor)}`
+        },
+        active: {
+            main: activeColor,
+            light: `${lighten(0.1, activeColor)}`,
+            dark: `${darken(0.1, activeColor)}`
         },
         grey: {
             100: '#f5f5f5',

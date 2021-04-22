@@ -33,7 +33,7 @@ export const MainItem = (props: MainItemT) => {
         <ShopItem>
             <CartIconWrap>
                 {props.type === "shop" ? (
-                    <AppIcons icon={"cart"} width={"20"} fill={isInCart ? "red" : ""} onClick={addToCartHandler} />
+                    <AppIcons icon={"cart"} width={"20"} fill={isInCart ? "#df4665" : ""} onClick={addToCartHandler} />
                 ) : (
                     <AppIcons icon={"trash"} width={"20"} onClick={removeFromCart} />
                 )}

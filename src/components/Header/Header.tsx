@@ -1,35 +1,40 @@
 import React from "react";
 import styled from "styled-components/macro";
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { AppContainer } from "../../styles/GlobalStyles";
-import {Button} from "../common/Button/Button";
 import { NavLink } from "react-router-dom";
-import {routes} from "../../App/routes/routes";
-import {RootStateT} from "../../App/store/store";
+import { routes } from "../../App/routes/routes";
+import { RootStateT } from "../../App/store/store";
 import { AppIcons } from "../common/SvgIcons/AppIcons";
+import logo from "../../assets/img/logo.svg";
 
 export const Header = () => {
     const dispatch = useDispatch();
-    const totalItems = useSelector<RootStateT, number>(state => state.cart.items.length)
+    const totalItems = useSelector<RootStateT, number>((state) => state.cart.items.length);
 
-    return <NavBarWrap>
-        <AppContainer>
-            <NavBar>
-                <NavLink to={routes.main}>Logo</NavLink>
-                <NavLink to={routes.cart}>
-                    <CartWrap>
-                        <AppIcons icon={"cart"} width={"30"} fill={"red"}/>
-                        <ItemsCount>{totalItems}</ItemsCount>
-                    </CartWrap>
-
-                </NavLink>
-            </NavBar>
-        </AppContainer>
-    </NavBarWrap>;
+    return (
+        <NavBarWrap>
+            <AppContainer>
+                <NavBar>
+                    <NavLink to={routes.main}>
+                        <img src={logo} alt="Logo" />
+                    </NavLink>
+                    <NavLink to={routes.cart}>
+                        <CartWrap>
+                            <AppIcons icon={"cart"} width={"30"} />
+                            <ItemsCount>
+                                <CartIndicator color={totalItems > 0 ? "full" : "empty"}>{totalItems}</CartIndicator>
+                            </ItemsCount>
+                        </CartWrap>
+                    </NavLink>
+                </NavBar>
+            </AppContainer>
+        </NavBarWrap>
+    );
 };
 
 const NavBarWrap = styled.div`
-    background-color: ${({ theme }) => theme.color.secondary.main};
+    background-color: ${({ theme }) => theme.color.primary.main};
 `;
 
 const NavBar = styled.nav`
@@ -48,11 +53,24 @@ const NavBar = styled.nav`
 `;
 
 const ItemsCount = styled.div`
-  position: absolute;
-  top: -14px;
-  right: -9px;
+    position: absolute;
+    top: -20px;
+    right: -20px;
 `;
 
 const CartWrap = styled.div`
-  position: relative;
+    position: relative;
+`;
+
+type CardIndicatorT = {
+    color: "empty" | "full"
+}
+
+const CartIndicator = styled.span<CardIndicatorT>`
+  padding: 2px 6px;
+  width: 8px;
+  height: 8px;
+  background-color: ${((props) => props.color === "empty" ? "#dbb145" : "#df4665")};
+  color: ${((props) => props.color === "empty" ? "black" : "white")};
+  border-radius: 50%;
 `;
