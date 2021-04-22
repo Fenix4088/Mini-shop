@@ -16,7 +16,7 @@ export const ItemsList = () => {
 
             <ItemsWrap>
                 {shopItems.map((item) => {
-                    return <MainItem key={item.id} itemData={item} />;
+                    return <MainItem key={item.id} type={"shop"} itemData={item} />;
                 })}
             </ItemsWrap>
         </>

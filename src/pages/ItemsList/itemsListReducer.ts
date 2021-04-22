@@ -2,7 +2,7 @@
 
 import {appData, AppDataT} from "../../App/data/appData";
 
-type ActionsT = any;
+type ActionsT = ReturnType<typeof changeItemStatus>;
 
 export type InitialStateT = {
     shopItems: AppDataT
@@ -10,7 +10,7 @@ export type InitialStateT = {
 
 //* Actions
 const reducerActions = {
-
+    CHANGE_ITEM_STATUS: "itemsListReducer/CHANGE_ITEM_STATUS" as const,
 };
 
 
@@ -21,7 +21,14 @@ const initialState: InitialStateT = {
 };
 
 export const itemsListReducer = (state = initialState, action: ActionsT): InitialStateT => {
+    const {CHANGE_ITEM_STATUS} = reducerActions
     switch (action.type) {
+        case CHANGE_ITEM_STATUS: {
+            return {
+                ...state,
+                shopItems: state.shopItems.map(item => item.id === action.id ? {...item, isInCart: action.status}: item)
+            }
+        }
 
         default:
             return state;
@@ -29,6 +36,14 @@ export const itemsListReducer = (state = initialState, action: ActionsT): Initia
 };
 
 // * AC
+
+export const changeItemStatus = (id: string, status: boolean) => {
+    return {
+        type: reducerActions.CHANGE_ITEM_STATUS,
+        id,
+        status,
+    } as const;
+}
 
 
 

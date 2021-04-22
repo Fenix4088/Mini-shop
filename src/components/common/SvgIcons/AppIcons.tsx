@@ -3,8 +3,9 @@ import { DetailedHTMLProps } from "react";
 import styled from "styled-components/macro";
 
 type WorkersPanelIconT = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
-    icon: "add" | "update" | "delete" | "close" | "search" | "user" | "staff" | "cart";
+    icon: "add" | "update" | "delete" | "close" | "search" | "user" | "staff" | "cart" | "trash";
     width: "10" | "20" | "30" | "40" | "50" | "60" | "70" | "80" | "90" | "100";
+    fill?: string;
 };
 
 export const AppIcons = React.memo((props: WorkersPanelIconT) => {
@@ -167,8 +168,28 @@ export const AppIcons = React.memo((props: WorkersPanelIconT) => {
                     width={width}
                 >
                     <path
-                        fill="currentColor"
+                        fill={`${props.fill ? props.fill : "currenColor"}`}
                         d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"
+                    ></path>
+                </svg>
+            );
+            break;
+        case "trash":
+            finalIcon = (
+                <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="trash-alt"
+                    className="svg-inline--fa fa-trash-alt fa-w-14"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 448 512"
+                    width={width}
+                >
+                    <path
+                        fill={`${props.fill ? props.fill : "currentColor"}`}
+                        d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
                     ></path>
                 </svg>
             );

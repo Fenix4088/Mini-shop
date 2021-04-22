@@ -1,13 +1,26 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import styled from "styled-components/macro";
+import {RootStateT} from "../../App/store/store";
+import {AppDataT} from "../../App/data/appData";
+import {MainItem} from "../../components/MainItem/MainItem";
+import {ItemsWrap} from "../ItemsList/ItemsList";
 
 export const Cart = () => {
+    const cartItems = useSelector<RootStateT, AppDataT>((state) => state.cart.items);
     const dispatch = useDispatch();
 
-    return <>
-        <h1>Cart</h1>
-    </>;
+    return (
+        <>
+            <h1>Cart</h1>
+
+            <ItemsWrap>
+                {cartItems.map((item) => {
+                    return <MainItem key={item.id} type={"cart"} itemData={item} />;
+                })}
+            </ItemsWrap>
+        </>
+    );
 };
 
 const MainTable = styled.div``;
