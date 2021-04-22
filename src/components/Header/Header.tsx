@@ -1,20 +1,27 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useDispatch } from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import { AppContainer } from "../../styles/GlobalStyles";
 import {Button} from "../common/Button/Button";
 import { NavLink } from "react-router-dom";
 import {routes} from "../../App/routes/routes";
+import {RootStateT} from "../../App/store/store";
+import { AppIcons } from "../common/SvgIcons/AppIcons";
 
 export const Header = () => {
     const dispatch = useDispatch();
+    const totalItems = useSelector<RootStateT, number>(state => state.cart.items.length)
 
     return <NavBarWrap>
         <AppContainer>
             <NavBar>
                 <NavLink to={routes.main}>Logo</NavLink>
                 <NavLink to={routes.cart}>
-                    <Button>Cart [0]</Button>
+                    <CartWrap>
+                        <AppIcons icon={"cart"} width={"30"} fill={"red"}/>
+                        <ItemsCount>{totalItems}</ItemsCount>
+                    </CartWrap>
+
                 </NavLink>
             </NavBar>
         </AppContainer>
@@ -40,13 +47,12 @@ const NavBar = styled.nav`
     }
 `;
 
-const UserInfoWrap = styled.div`
-    margin-right: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+const ItemsCount = styled.div`
+  position: absolute;
+  top: -14px;
+  right: -9px;
+`;
 
-    & > div:first-child {
-        margin-right: 10px;
-    }
+const CartWrap = styled.div`
+  position: relative;
 `;
