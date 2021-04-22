@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { AppContainer } from "../../styles/GlobalStyles";
 import { NavLink } from "react-router-dom";
 import { routes } from "../../App/routes/routes";
@@ -9,8 +9,7 @@ import { AppIcons } from "../common/SvgIcons/AppIcons";
 import logo from "../../assets/img/logo.svg";
 
 export const Header = () => {
-    const dispatch = useDispatch();
-    const totalItems = useSelector<RootStateT, number>((state) => state.cart.items.length);
+    const totalItemsCount = useSelector<RootStateT, number>((state) => state.cart.items.length);
 
     return (
         <NavBarWrap>
@@ -23,7 +22,9 @@ export const Header = () => {
                         <CartWrap>
                             <AppIcons icon={"cart"} width={"30"} />
                             <ItemsCount>
-                                <CartIndicator color={totalItems > 0 ? "full" : "empty"}>{totalItems}</CartIndicator>
+                                <CartIndicator color={totalItemsCount > 0 ? "full" : "empty"}>
+                                    {totalItemsCount}
+                                </CartIndicator>
                             </ItemsCount>
                         </CartWrap>
                     </NavLink>
