@@ -1,4 +1,5 @@
 import Toast from "light-toast/dist/toast";
+import {AppDataT} from "../App/data/appData";
 
 export const formatDate = (date: string) => {
     return new Date(date).toLocaleDateString("ru", {
@@ -7,6 +8,15 @@ export const formatDate = (date: string) => {
         day: "numeric"
     });
 };
+
+export const calcTotalPrice = (items: AppDataT) => {
+    console.log("Calculate price")
+    return items.reduce((acc, n) => {
+        acc += +n.price
+        return acc;
+    }, 0)
+
+}
 
 // export const toast = (status: "success" | "fail" | "loading" | "info", message: string) => {
 //     switch (status) {

@@ -4,11 +4,11 @@ import { ShopItemT } from "../../App/data/appData";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 import { changeItemStatus } from "../../pages/ItemsList/itemsListReducer";
-import {addToCart, deleteFromCart} from "../../pages/Cart/cartReducer";
+import { addToCart, deleteFromCart } from "../../pages/Cart/cartReducer";
 
 type MainItemT = {
     itemData: ShopItemT;
-    type: "shop" | "cart"
+    type: "shop" | "cart";
 };
 export const MainItem = (props: MainItemT) => {
     const { id, label, price, name, isInCart } = props.itemData;
@@ -18,20 +18,25 @@ export const MainItem = (props: MainItemT) => {
         dispatch(changeItemStatus(id, !isInCart));
 
         if (!isInCart) {
-            dispatch(addToCart(props.itemData))
-            console.log("Add to cart");
-
+            dispatch(addToCart(props.itemData));
         } else {
-            dispatch(deleteFromCart(props.itemData.id))
-            console.log("Remove from cart");
+            removeFromCart();
         }
+    };
+
+    const removeFromCart = () => {
+        dispatch(changeItemStatus(id, false));
+        dispatch(deleteFromCart(props.itemData.id));
     };
 
     return (
         <ShopItem>
             <CartIconWrap>
-                {props.type === "shop" ? <AppIcons icon={"cart"} width={"20"} fill={isInCart ? "red" : ""} onClick={addToCartHandler} /> : <AppIcons icon={"trash"} width={"20"}/> }
-
+                {props.type === "shop" ? (
+                    <AppIcons icon={"cart"} width={"20"} fill={isInCart ? "red" : ""} onClick={addToCartHandler} />
+                ) : (
+                    <AppIcons icon={"trash"} width={"20"} onClick={removeFromCart} />
+                )}
             </CartIconWrap>
             <div>{name}</div>
             <div>{"$" + price}</div>
