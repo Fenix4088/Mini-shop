@@ -26,7 +26,7 @@ export const itemsListReducer = (state = initialState, action: ActionsT): Initia
         case CHANGE_ITEM_STATUS: {
             return {
                 ...state,
-                shopItems: state.shopItems.map(item => item.id === action.id ? {...item, isInCart: action.status}: item)
+                shopItems: state.shopItems.map(item => item.id === action.id ? {...item, isInCart: action.status} : item)
             }
         }
 

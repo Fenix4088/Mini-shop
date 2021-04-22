@@ -1,8 +1,8 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import createSagaMiddleware from "redux-saga";
 import { composeWithDevTools } from "redux-devtools-extension";
-import {itemsListReducer} from "../../pages/ItemsList/itemsListReducer";
-import {cartReducer} from "../../pages/Cart/cartReducer";
+import { itemsListReducer } from "../../pages/ItemsList/itemsListReducer";
+import { cartReducer } from "../../pages/Cart/cartReducer";
+import { restoreState, saveState } from "../../helpers/localStorage";
 
 export type RootStateT = ReturnType<typeof rootReducer>;
 
@@ -11,12 +11,16 @@ const rootReducer = combineReducers({
     cart: cartReducer
 });
 
-const sagaMiddleware = createSagaMiddleware();
 
-export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(sagaMiddleware)));
+export const store = createStore(
+    rootReducer,
+    restoreState<RootStateT>("state", {} as RootStateT),
+    composeWithDevTools(applyMiddleware())
+);
 
-sagaMiddleware.run(rootWatcher);
-
-function* rootWatcher() {
-}
-
+store.subscribe(() => {
+    saveState<RootStateT>("state", {
+        shop: store.getState().shop,
+        cart: store.getState().cart
+    });
+});

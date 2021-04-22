@@ -15,9 +15,9 @@ export const MainItem = (props: MainItemT) => {
     const dispatch = useDispatch();
 
     const addToCartHandler = () => {
-        dispatch(changeItemStatus(id, !isInCart));
 
         if (!isInCart) {
+            dispatch(changeItemStatus(id, true));
             dispatch(addToCart(props.itemData));
         } else {
             removeFromCart();
