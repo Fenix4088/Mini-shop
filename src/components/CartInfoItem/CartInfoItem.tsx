@@ -20,8 +20,13 @@ export type CartInfoItemT = {
     width: "10" | "20" | "30" | "40" | "50" | "60" | "70" | "80" | "90" | "100";
     fill?: string;
 };
-export const CartInfoItem = React.memo((props: CartInfoItemT) => {
-    const { icon, width, data, fill, message } = props;
+
+type CartInfoItemPropsT = {
+    payload: CartInfoItemT;
+};
+
+export const CartInfoItem = React.memo((props: CartInfoItemPropsT) => {
+    const { icon, width, data, fill, message } = props.payload;
     return (
         <InfoItem>
             <InfoIcon>

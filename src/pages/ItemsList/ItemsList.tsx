@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { RootStateT } from "../../App/store/store";
@@ -28,7 +28,7 @@ export const ItemsList = () => {
         return data;
     };
 
-    const onFilterChange = (value: filterParamT) => setFilterParam(value);
+    const onFilterChange = useCallback((value: filterParamT) => setFilterParam(value), [setFilterParam]);
 
     return (
         <>
@@ -50,8 +50,5 @@ export const ItemsWrap = styled.div`
     @media (min-width: ${({ theme }) => theme.mediaQuery.tablet}) {
         flex-flow: row wrap;
         justify-content: space-between;
-    }
-
-    @media (min-width: ${({ theme }) => theme.mediaQuery.laptop}) {
     }
 `;

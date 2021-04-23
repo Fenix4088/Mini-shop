@@ -21,14 +21,7 @@ export const Cart = () => {
         <>
             <CartInfoWrap>
                 {cartInfo.map((item, i) => (
-                    <CartInfoItem
-                        key={i}
-                        icon={item.icon}
-                        width={item.width}
-                        data={item.data}
-                        message={item.message}
-                        fill={item.fill}
-                    />
+                    <CartInfoItem key={i} payload={item} />
                 ))}
             </CartInfoWrap>
 
@@ -38,7 +31,7 @@ export const Cart = () => {
                         return <MainItem key={item.id} type={"cart"} itemData={item} />;
                     })
                 ) : (
-                    <div>Your cart is empty :-(</div>
+                    <EmptyCartTitle>Your cart is empty :-(</EmptyCartTitle>
                 )}
             </ItemsWrap>
         </>
@@ -54,4 +47,9 @@ const CartInfoWrap = styled.div`
     background-color: ${({ theme }) => theme.color.primary.main};
     box-shadow: ${({ theme }) => theme.shadow["4"]};
     border-radius: 15px;
+`;
+
+const EmptyCartTitle = styled.div`
+    margin: 0 auto;
+    font-size: ${({ theme }) => theme.font.size.b3};
 `;

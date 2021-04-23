@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { AppIcons } from "../common/SvgIcons/AppIcons";
 import { RadioButtons } from "../common/RadioButtons/RadioButtons";
 import { filterParamT } from "../../pages/ItemsList/ItemsList";
@@ -9,9 +9,10 @@ type FilterPropsT = {
     currentFilterVal: filterParamT;
 };
 
-export const Filter = (props: FilterPropsT) => {
+export const Filter = React.memo((props: FilterPropsT) => {
+    const { filterChange, currentFilterVal } = props;
     const [isMobileFilterOpen, setIsMobileFilterOpen] = useState<boolean>(false);
-    const onFilterChange = (value: filterParamT) => props.filterChange(value);
+    const onFilterChange = useCallback((value: filterParamT) => filterChange(value), [filterChange]);
 
     const filterIconClickHandler = () => setIsMobileFilterOpen(!isMobileFilterOpen);
     return (
@@ -24,12 +25,12 @@ export const Filter = (props: FilterPropsT) => {
                 <RadioButtons
                     options={["name", "price", "none"]}
                     onChangeOption={onFilterChange}
-                    value={props.currentFilterVal}
+                    value={currentFilterVal}
                 />
             </FilterWrap>
         </>
     );
-};
+});
 
 type FilterWrapT = {
     position: string;

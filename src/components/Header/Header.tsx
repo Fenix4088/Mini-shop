@@ -72,7 +72,7 @@ type CardIndicatorT = {
 };
 
 const CartIndicator = styled.span<CardIndicatorT>`
-    padding: 2px 6px;
+    padding: 4px 6px;
     width: 8px;
     height: 8px;
     background-color: ${(props) => (props.color === "empty" ? "#dbb145" : "#df4665")};
