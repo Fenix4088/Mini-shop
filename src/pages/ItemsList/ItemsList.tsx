@@ -1,17 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
 import { RootStateT } from "../../App/store/store";
 import { AppDataT } from "../../App/data/appData";
 import { MainItem } from "../../components/MainItem/MainItem";
+import { Filter } from "../../components/Filter/Filter";
+
+export type filterParamT = "name" | "price" | "none";
 
 export const ItemsList = () => {
     const shopItems = useSelector<RootStateT, AppDataT>((state) => state.shop.shopItems);
+    const [filterParam, setFilterParam] = useState<filterParamT>("none");
+
+    const filteredData = (data: AppDataT, filterLabel: filterParamT): AppDataT => {
+        if (filterLabel !== "none") {
+            return [...data].sort((a, b) => {
+                if (a[filterLabel] < b[filterLabel]) {
+                    return -1;
+                }
+                if (a[filterLabel] > b[filterLabel]) {
+                    return 1;
+                }
+                return 0;
+            });
+        }
+
+        return data;
+    };
+
+    const onFilterChange = (value: filterParamT) => setFilterParam(value);
 
     return (
         <>
+            <Filter filterChange={onFilterChange} currentFilterVal={filterParam} />
             <ItemsWrap>
-                {shopItems.map((item) => {
+                {filteredData(shopItems, filterParam).map((item) => {
                     return <MainItem key={item.id} type={"shop"} itemData={item} />;
                 })}
             </ItemsWrap>

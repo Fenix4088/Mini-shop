@@ -37,8 +37,8 @@ export const Header = () => {
 const NavBarWrap = styled.div`
     background-color: ${({ theme }) => theme.color.primary.main};
     padding: 15px;
-    @media (min-width: ${({ theme }) => theme.mediaQuery.tablet}) {
-    }
+    z-index: 130;
+
 `;
 
 const NavBar = styled.nav`

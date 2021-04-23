@@ -8,46 +8,40 @@ type PropsType = DefaultRadioPropsType & {
     onChangeOption?: (option: any) => void;
 };
 
-export const RadioButtons: React.FC<PropsType> = React.memo(({
-    type,
-    name,
-    options,
-    value,
-    onChange,
-    onChangeOption,
-    ...restProps
-}) => {
-    const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
-        if (onChangeOption) {
-            onChangeOption(e.currentTarget.value);
-        }
-    };
+export const RadioButtons: React.FC<PropsType> = React.memo(
+    ({ type, name, options, value, onChange, onChangeOption, ...restProps }) => {
+        const onChangeCallback = (e: ChangeEvent<HTMLInputElement>) => {
+            if (onChangeOption) {
+                onChangeOption(e.currentTarget.value);
+            }
+        };
 
-    const mappedOptions: any[] = options
-        ? options.map((o, i) => (
-              <RadioContainer key={name + "-" + i}>
-                  <span>{o}</span>
-                  <input
-                      name={"gender"}
-                      type={"radio"}
-                      value={o}
-                      onChange={onChange}
-                      // checked={value === o}
-                      {...restProps}
-                  />
-                  <Checkmark className={"checkmark"} />
-              </RadioContainer>
-          ))
-        : [];
+        const mappedOptions: any[] = options
+            ? options.map((o, i) => (
+                  <RadioContainer key={name + "-" + i}>
+                      <span>{o}</span>
+                      <input
+                          name={"gender"}
+                          type={"radio"}
+                          value={o}
+                          onChange={onChangeCallback}
+                          checked={value === o}
+                          {...restProps}
+                      />
+                      <Checkmark className={"checkmark"} />
+                  </RadioContainer>
+              ))
+            : [];
 
-    return <>{mappedOptions}</>;
-});
+        return <>{mappedOptions}</>;
+    }
+);
 
 const RadioContainer = styled.label`
-    // The container
     position: relative;
 
-    display: block;
+    display: flex;
+    align-items: center;
 
     padding-left: 25px;
     padding-right: 15px;
@@ -59,7 +53,6 @@ const RadioContainer = styled.label`
     -ms-user-select: none;
     user-select: none;
 
-    // Hide the browser's default radio button
     & input {
         position: absolute;
 
@@ -67,22 +60,18 @@ const RadioContainer = styled.label`
         cursor: pointer;
     }
 
-    // On mouse-over, add a background color
     &:hover input ~ .checkmark {
         background-color: ${({ theme }) => theme.color.grey["400"]};
     }
 
-    // When the radio button is checked, add a blue background
     & input:checked ~ .checkmark {
-        background-color: ${({ theme }) => theme.color.primary.main};
+        background-color: ${({ theme }) => theme.color.active.main};
     }
 
-    // Show the indicator (dot/circle) when checked
     & input:checked ~ .checkmark:after {
         display: block;
     }
 
-    // Style the indicator (dot/circle)
     & .checkmark:after {
         top: 5px;
         left: 5px;
@@ -96,7 +85,6 @@ const RadioContainer = styled.label`
 `;
 
 const Checkmark = styled.div`
-    // Create a custom radio button
     position: absolute;
     bottom: 2px;
     left: 0;
@@ -107,7 +95,6 @@ const Checkmark = styled.div`
     background-color: ${({ theme }) => theme.color.grey["400"]};
     border-radius: 50%;
 
-    // Create the indicator (the dot/circle - hidden when not checked)
     &:after {
         content: "";
         position: absolute;
