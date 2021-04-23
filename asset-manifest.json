@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Mini-shop/static/css/main.bab0b925.chunk.css",
+    "main.js": "/Mini-shop/static/js/main.d674edda.chunk.js",
+    "main.js.map": "/Mini-shop/static/js/main.d674edda.chunk.js.map",
+    "runtime-main.js": "/Mini-shop/static/js/runtime-main.767bb195.js",
+    "runtime-main.js.map": "/Mini-shop/static/js/runtime-main.767bb195.js.map",
+    "static/js/2.8c185f82.chunk.js": "/Mini-shop/static/js/2.8c185f82.chunk.js",
+    "static/js/2.8c185f82.chunk.js.map": "/Mini-shop/static/js/2.8c185f82.chunk.js.map",
+    "static/js/3.9d97e152.chunk.js": "/Mini-shop/static/js/3.9d97e152.chunk.js",
+    "static/js/3.9d97e152.chunk.js.map": "/Mini-shop/static/js/3.9d97e152.chunk.js.map",
+    "index.html": "/Mini-shop/index.html",
+    "static/css/main.bab0b925.chunk.css.map": "/Mini-shop/static/css/main.bab0b925.chunk.css.map",
+    "static/js/2.8c185f82.chunk.js.LICENSE.txt": "/Mini-shop/static/js/2.8c185f82.chunk.js.LICENSE.txt",
+    "static/media/logo.97aea350.svg": "/Mini-shop/static/media/logo.97aea350.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.767bb195.js",
+    "static/js/2.8c185f82.chunk.js",
+    "static/css/main.bab0b925.chunk.css",
+    "static/js/main.d674edda.chunk.js"
+  ]
+}
