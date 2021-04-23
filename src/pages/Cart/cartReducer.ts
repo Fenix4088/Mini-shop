@@ -22,7 +22,6 @@ const initialState: InitialStateT = {
 export const cartReducer = (state = initialState, action: ActionsT): InitialStateT => {
     const {ADD_TO_CART, DELETE_FROM_CART} = reducerActions;
     switch (action.type) {
-
         case ADD_TO_CART:
             return {
                 ...state,

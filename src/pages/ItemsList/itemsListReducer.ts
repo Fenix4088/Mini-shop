@@ -16,7 +16,7 @@ const reducerActions = {
 
 
 // * reducer
-const initialState: InitialStateT = {
+ const initialState: InitialStateT = {
     shopItems: appData,
 };
 
