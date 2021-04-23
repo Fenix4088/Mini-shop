@@ -14,7 +14,7 @@ export const appData: AppDataT = [
         id: v1(),
         name: "Portable Blender",
         label:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti doloremque officia. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti doloremque officia.",
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. consectetur adipisicing elit. Autem deleniti doloremque officia. ",
         price: 223,
         isInCart: false
     },

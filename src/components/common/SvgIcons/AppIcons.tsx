@@ -3,7 +3,18 @@ import { DetailedHTMLProps } from "react";
 import styled from "styled-components/macro";
 
 type WorkersPanelIconT = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> & {
-    icon: "add" | "update" | "delete" | "close" | "search" | "user" | "staff" | "cart" | "trash";
+    icon:
+        | "add"
+        | "update"
+        | "delete"
+        | "close"
+        | "search"
+        | "user"
+        | "staff"
+        | "cart"
+        | "trash"
+        | "dollar"
+        | "fullCart";
     width: "10" | "20" | "30" | "40" | "50" | "60" | "70" | "80" | "90" | "100";
     fill?: string;
 };
@@ -190,6 +201,46 @@ export const AppIcons = React.memo((props: WorkersPanelIconT) => {
                     <path
                         fill={`${props.fill ? props.fill : "currentColor"}`}
                         d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"
+                    ></path>
+                </svg>
+            );
+            break;
+        case "dollar":
+            finalIcon = (
+                <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="dollar-sign"
+                    className="svg-inline--fa fa-dollar-sign fa-w-9"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 288 512"
+                    width={width}
+                >
+                    <path
+                        fill={`${props.fill ? props.fill : "currentColor"}`}
+                        d="M209.2 233.4l-108-31.6C88.7 198.2 80 186.5 80 173.5c0-16.3 13.2-29.5 29.5-29.5h66.3c12.2 0 24.2 3.7 34.2 10.5 6.1 4.1 14.3 3.1 19.5-2l34.8-34c7.1-6.9 6.1-18.4-1.8-24.5C238 74.8 207.4 64.1 176 64V16c0-8.8-7.2-16-16-16h-32c-8.8 0-16 7.2-16 16v48h-2.5C45.8 64-5.4 118.7.5 183.6c4.2 46.1 39.4 83.6 83.8 96.6l102.5 30c12.5 3.7 21.2 15.3 21.2 28.3 0 16.3-13.2 29.5-29.5 29.5h-66.3C100 368 88 364.3 78 357.5c-6.1-4.1-14.3-3.1-19.5 2l-34.8 34c-7.1 6.9-6.1 18.4 1.8 24.5 24.5 19.2 55.1 29.9 86.5 30v48c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16v-48.2c46.6-.9 90.3-28.6 105.7-72.7 21.5-61.6-14.6-124.8-72.5-141.7z"
+                    ></path>
+                </svg>
+            );
+            break;
+        case "fullCart":
+            finalIcon = (
+                <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    data-prefix="fas"
+                    data-icon="luggage-cart"
+                    className="svg-inline--fa fa-luggage-cart fa-w-20"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 640 512"
+                    width={width}
+                >
+                    <path
+                        fill={`${props.fill ? props.fill : "currentColor"}`}
+                        d="M224 320h32V96h-32c-17.67 0-32 14.33-32 32v160c0 17.67 14.33 32 32 32zm352-32V128c0-17.67-14.33-32-32-32h-32v224h32c17.67 0 32-14.33 32-32zm48 96H128V16c0-8.84-7.16-16-16-16H16C7.16 0 0 7.16 0 16v32c0 8.84 7.16 16 16 16h48v368c0 8.84 7.16 16 16 16h82.94c-1.79 5.03-2.94 10.36-2.94 16 0 26.51 21.49 48 48 48s48-21.49 48-48c0-5.64-1.15-10.97-2.94-16h197.88c-1.79 5.03-2.94 10.36-2.94 16 0 26.51 21.49 48 48 48s48-21.49 48-48c0-5.64-1.15-10.97-2.94-16H624c8.84 0 16-7.16 16-16v-32c0-8.84-7.16-16-16-16zM480 96V48c0-26.51-21.49-48-48-48h-96c-26.51 0-48 21.49-48 48v272h192V96zm-48 0h-96V48h96v48z"
                     ></path>
                 </svg>
             );

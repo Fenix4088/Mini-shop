@@ -54,7 +54,8 @@ export const MainItem = (props: MainItemT) => {
 
 const ItemDesc = styled.div`
     position: absolute;
-    bottom: -200px;
+    height: 150px;
+    bottom: -400px;
     padding: 10px;
     ${({ theme }) => theme.mixins.flexColumnCenter}
     font-size: ${({ theme }) => theme.font.size.s1};
@@ -112,7 +113,8 @@ const ItemWrap = styled.div`
 
 const ItemDescText = styled.div`
     margin-bottom: 10px;
+    color: white;
 `;
 const ItemDescInfoLink = styled.div`
-  font-size: ${({ theme }) => theme.font.size.b1};
+    font-size: ${({ theme }) => theme.font.size.b1};
 `;

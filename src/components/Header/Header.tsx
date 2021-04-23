@@ -73,5 +73,6 @@ const CartIndicator = styled.span<CardIndicatorT>`
   height: 8px;
   background-color: ${((props) => props.color === "empty" ? "#dbb145" : "#df4665")};
   color: ${((props) => props.color === "empty" ? "black" : "white")};
+  box-shadow: ${({ theme }) => theme.shadow["4"]};
   border-radius: 50%;
 `;
