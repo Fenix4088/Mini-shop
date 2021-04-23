@@ -1,4 +1,20 @@
 
+# Mini-shop
+
+## Technologies
+- React.js
+- TypeScript
+- styled-components
+- html
+- unit-tests
+
+## Links
+https://fenix4088.github.io/Mini-shop/
+
+## Links
+:dvd:[Demo](https://fenix4088.github.io/Mini-shop/)  
+
+
 
 ### `yarn start`
 
