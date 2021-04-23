@@ -8,8 +8,6 @@ import { calcTotalPrice } from "../../helpers/helpers";
 import { CartInfoItem, CartInfoItemT } from "../../components/CartInfoItem/CartInfoItem";
 import styled from "styled-components/macro";
 
-type cartInfoT = {};
-
 export const Cart = () => {
     const cartItems = useSelector<RootStateT, AppDataT>((state) => state.cart.items);
     const price = useMemo(() => calcTotalPrice(cartItems), [cartItems]);
@@ -22,8 +20,9 @@ export const Cart = () => {
     return (
         <>
             <CartInfoWrap>
-                {cartInfo.map((item) => (
+                {cartInfo.map((item, i) => (
                     <CartInfoItem
+                        key={i}
                         icon={item.icon}
                         width={item.width}
                         data={item.data}

@@ -1,5 +1,5 @@
 import { AppIcons } from "../common/SvgIcons/AppIcons";
-import React from "react";
+import React, { useCallback } from "react";
 import { ShopItemT } from "../../App/data/appData";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
@@ -10,23 +10,23 @@ type MainItemT = {
     itemData: ShopItemT;
     type: "shop" | "cart";
 };
-export const MainItem = (props: MainItemT) => {
+export const MainItem = React.memo((props: MainItemT) => {
     const { id, label, price, name, isInCart } = props.itemData;
     const dispatch = useDispatch();
 
-    const addToCartHandler = () => {
+    const removeFromCart = useCallback(() => {
+        dispatch(changeItemStatus(id, false));
+        dispatch(deleteFromCart(id));
+    }, [dispatch, id]);
+
+    const addToCartHandler = useCallback(() => {
         if (!isInCart) {
             dispatch(changeItemStatus(id, true));
             dispatch(addToCart(props.itemData));
         } else {
             removeFromCart();
         }
-    };
-
-    const removeFromCart = () => {
-        dispatch(changeItemStatus(id, false));
-        dispatch(deleteFromCart(props.itemData.id));
-    };
+    }, [dispatch, id, props.itemData, removeFromCart, isInCart]);
 
     return (
         <ShopItem>
@@ -50,7 +50,7 @@ export const MainItem = (props: MainItemT) => {
             </ItemDesc>
         </ShopItem>
     );
-};
+});
 
 const ItemDesc = styled.div`
     position: absolute;
@@ -73,14 +73,14 @@ export const ShopItem = styled.div`
     overflow: hidden;
     border: 1px solid ${({ theme }) => theme.color.primary.light};
     box-shadow: ${({ theme }) => theme.shadow["4"]};
+    min-height: 300px;
 
     @media (min-width: ${({ theme }) => theme.mediaQuery.tablet}) {
-      width: 30%;
-      min-height: 300px;
+        width: 30%;
     }
 
     @media (min-width: ${({ theme }) => theme.mediaQuery.laptop}) {
-      width: calc(25% - 40px);
+        width: calc(25% - 40px);
     }
 
     :hover ${ItemDesc} {

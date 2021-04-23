@@ -36,6 +36,9 @@ export const Header = () => {
 
 const NavBarWrap = styled.div`
     background-color: ${({ theme }) => theme.color.primary.main};
+    padding: 15px;
+    @media (min-width: ${({ theme }) => theme.mediaQuery.tablet}) {
+    }
 `;
 
 const NavBar = styled.nav`
@@ -60,19 +63,20 @@ const ItemsCount = styled.div`
 `;
 
 const CartWrap = styled.div`
+    margin-right: 15px;
     position: relative;
 `;
 
 type CardIndicatorT = {
-    color: "empty" | "full"
-}
+    color: "empty" | "full";
+};
 
 const CartIndicator = styled.span<CardIndicatorT>`
-  padding: 2px 6px;
-  width: 8px;
-  height: 8px;
-  background-color: ${((props) => props.color === "empty" ? "#dbb145" : "#df4665")};
-  color: ${((props) => props.color === "empty" ? "black" : "white")};
-  box-shadow: ${({ theme }) => theme.shadow["4"]};
-  border-radius: 50%;
+    padding: 2px 6px;
+    width: 8px;
+    height: 8px;
+    background-color: ${(props) => (props.color === "empty" ? "#dbb145" : "#df4665")};
+    color: ${(props) => (props.color === "empty" ? "black" : "white")};
+    box-shadow: ${({ theme }) => theme.shadow["4"]};
+    border-radius: 50%;
 `;
