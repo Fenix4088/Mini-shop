@@ -38,7 +38,6 @@ const NavBarWrap = styled.div`
     background-color: ${({ theme }) => theme.color.primary.main};
     padding: 15px;
     z-index: 130;
-
 `;
 
 const NavBar = styled.nav`
@@ -72,9 +71,11 @@ type CardIndicatorT = {
 };
 
 const CartIndicator = styled.span<CardIndicatorT>`
-    padding: 4px 6px;
-    width: 8px;
-    height: 8px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${(props) => (props.color === "empty" ? "#dbb145" : "#df4665")};
     color: ${(props) => (props.color === "empty" ? "black" : "white")};
     box-shadow: ${({ theme }) => theme.shadow["4"]};

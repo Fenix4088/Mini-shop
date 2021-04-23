@@ -35,7 +35,7 @@
     "uuid": "^8.3.2",
     "web-vitals": "^1.0.1"
   },
-  "homepage": "https://fenix4088.github.io/Workers-panel",
+  "homepage": "https://fenix4088.github.io/Mini-shop",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
