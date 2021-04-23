@@ -9,9 +9,6 @@
 - unit-tests
 
 ## Links
-https://fenix4088.github.io/Mini-shop/
-
-## Links
 :dvd:[Demo](https://fenix4088.github.io/Mini-shop/)  
 
 
