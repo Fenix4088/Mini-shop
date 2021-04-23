@@ -21,6 +21,14 @@ export const ItemsList = () => {
 
 export const ItemsWrap = styled.div`
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-flow: column wrap;
+    align-items: center;
+
+    @media (min-width: ${({ theme }) => theme.mediaQuery.tablet}) {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+
+    @media (min-width: ${({ theme }) => theme.mediaQuery.laptop}) {
+    }
 `;

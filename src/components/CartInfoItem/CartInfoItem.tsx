@@ -1,5 +1,6 @@
 import React from "react";
 import { AppIcons } from "../common/SvgIcons/AppIcons";
+import styled from "styled-components/macro";
 
 export type CartInfoItemT = {
     message: string;
@@ -22,13 +23,33 @@ export type CartInfoItemT = {
 export const CartInfoItem = React.memo((props: CartInfoItemT) => {
     const { icon, width, data, fill, message } = props;
     return (
-        <div>
-            <span>
+        <InfoItem>
+            <InfoIcon>
                 <AppIcons icon={icon} width={width} fill={fill ? fill : ""} />
-            </span>
-            <span>
+            </InfoIcon>
+            <InfoText>
                 {message}: {data}
-            </span>
-        </div>
+            </InfoText>
+        </InfoItem>
     );
 });
+
+const InfoItem = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+`;
+
+const InfoIcon = styled.span`
+    min-width: 30px;
+    margin-right: 20px;
+`;
+const InfoText = styled.span`
+    color: white;
+    font-size: ${({ theme }) => theme.font.size.b2};
+    font-weight: 600;
+`;

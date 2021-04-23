@@ -85,6 +85,10 @@ export const theme = {
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
-    text-align: center;`
+    text-align: center;`,
+        flex: `    
+    display: flex;
+    justify-content: center
+    `
     }
 };

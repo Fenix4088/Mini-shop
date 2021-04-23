@@ -67,12 +67,21 @@ const ItemDesc = styled.div`
 export const ShopItem = styled.div`
     position: relative;
     padding: 30px 20px;
-    width: calc(25% - 40px);
+    width: 60%;
     ${({ theme }) => theme.mixins.flexColumnCenter}
     margin-bottom: 50px;
     overflow: hidden;
     border: 1px solid ${({ theme }) => theme.color.primary.light};
     box-shadow: ${({ theme }) => theme.shadow["4"]};
+
+    @media (min-width: ${({ theme }) => theme.mediaQuery.tablet}) {
+      width: 30%;
+      min-height: 300px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.mediaQuery.laptop}) {
+      width: calc(25% - 40px);
+    }
 
     :hover ${ItemDesc} {
         bottom: 0;
